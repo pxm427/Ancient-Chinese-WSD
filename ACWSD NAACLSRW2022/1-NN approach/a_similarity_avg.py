@@ -24,12 +24,12 @@ for key in test_vecs.keys():
                 output_label = meaning_embeds[0][1:]
         output_label_list.append(int(output_label))
         
-        with open('/users/kcnco/GitHub2021ACWSD/1NN/output_avg.txt', 'a+', encoding='utf-8')as f:
+        with open('/clwork/xiaomeng/Test/1-NNapproach_guwenbert/output_avg.txt', 'a+', encoding='utf-8')as f:
             f.write(f'char:{key}, sent:{test_embed[2]}, predict:{output_label}, gold:{int(test_embed[1])}\r\n')
         
 
     accuracy = M.accuracy_score(gold_label_list, output_label_list)    
-    with open('/users/kcnco/GitHub2021ACWSD/1NN/accuracy_avg.txt', 'a+', encoding='utf-8')as f1:
+    with open('/clwork/xiaomeng/Test/1-NNapproach_guwenbert/accuracy_avg.txt', 'a+', encoding='utf-8')as f1:
         f1.write(f'char:{key}, acc:{accuracy}\r\n')
 
 

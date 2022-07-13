@@ -9,12 +9,17 @@ import numpy as np
 import sklearn.metrics as M
 import torch.nn.functional as F
 from collections import defaultdict
-from transformers import AutoTokenizer, AutoModel
+#from transformers import AutoTokenizer, AutoModel
 
-model = AutoModel.from_pretrained("ethanyt/guwenbert-base")
+#model = AutoModel.from_pretrained("ethanyt/guwenbert-base")
+#tokenizer = AutoTokenizer.from_pretrained("ethanyt/guwenbert-base")
+
+from transformers import AutoTokenizer, AutoModel
 tokenizer = AutoTokenizer.from_pretrained("ethanyt/guwenbert-base")
+model = AutoModel.from_pretrained("ethanyt/guwenbert-base")
+
 model.eval()
-converter = opencc.OpenCC('t2s')
+#converter = opencc.OpenCC('t2s')
 
 def get_embeddings(sentence):
     inputs = tokenizer(sentence, return_tensors="pt")
@@ -39,7 +44,7 @@ def get_test_data_embed(sentence):
     avg_embed = input_last_hidden.mean(1)
     return avg_embed
 
-test_dict = load_test_data('/users/kcnco/GitHub2021ACWSD/Zuo Zhuan/1nn/test_list.txt')
+test_dict = load_test_data('/clwork/xiaomeng/Test/ZuoZhuan/test_list_j.txt')
 
 test_vecs = {}
 test_vecs_2 = {}

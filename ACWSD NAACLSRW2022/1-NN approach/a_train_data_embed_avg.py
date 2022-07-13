@@ -7,13 +7,18 @@ import argparse
 import sklearn.metrics as M
 import torch.nn.functional as F
 from collections import defaultdict
+#from transformers import AutoTokenizer, AutoModel
+
+
+#tokenizer = AutoTokenizer.from_pretrained("ethanyt/guwenbert-base")
+#model = AutoModel.from_pretrained("ethanyt/guwenbert-base")
+
 from transformers import AutoTokenizer, AutoModel
-
-
 tokenizer = AutoTokenizer.from_pretrained("ethanyt/guwenbert-base")
 model = AutoModel.from_pretrained("ethanyt/guwenbert-base")
+
 model.eval()
-converter = opencc.OpenCC('t2s')
+#converter = opencc.OpenCC('t2s')
 
 def get_embeddings(sentence):
     inputs = tokenizer(sentence, return_tensors="pt")
@@ -40,7 +45,7 @@ def get_train_data_embed(sentence):
     char_avg_embed = input_last_hidden.mean(1)
     return char_avg_embed
 
-train_dict = load_train_data('/users/kcnco/GitHub2021ACWSD/Zuo Zhuan/1nn/train_list.txt')
+train_dict = load_train_data('/clwork/xiaomeng/Test/ZuoZhuan/train_list_j.txt')
 
 
 senses_vecs = {}

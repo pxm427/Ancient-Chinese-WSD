@@ -9,12 +9,20 @@ import sklearn.metrics as M
 import torch.nn.functional as F
 from torch._C import device
 from collections import defaultdict
-from transformers import AutoTokenizer, AutoModel
+#from transformers import AutoTokenizer, AutoModel
 
-model = AutoModel.from_pretrained("ethanyt/guwenbert-base")
+
+from transformers import AutoTokenizer, AutoModel
 tokenizer = AutoTokenizer.from_pretrained("ethanyt/guwenbert-base")
+model = AutoModel.from_pretrained("ethanyt/guwenbert-base")
+
+#model = AutoModel.from_pretrained("ethanyt/guwenbert-base")
+#tokenizer = AutoTokenizer.from_pretrained("ethanyt/guwenbert-base")
+
+
+
 model.eval()
-converter = opencc.OpenCC('t2s')
+#converter = opencc.OpenCC('t2s')
 
 def get_embeddings(sentence):
     inputs = tokenizer(sentence, return_tensors="pt")
@@ -46,13 +54,14 @@ def load_gloss(file):
     return gloss_dict
 
 def get_gloss_embed(sentence):
-    gloss = converter.convert(sentence)
-    gloss_embed = get_embeddings(gloss)
+    gloss_embed = get_embeddings(sentence)
+    #gloss = converter.convert(sentence)
+    #gloss_embed = get_embeddings(gloss)
     ##get the average embedding of a sentence(sense embedding of target character) => gloss embedding
     gloss_avg_embed = gloss_embed.mean(1)
     return gloss_avg_embed
 
-gloss_dict = load_gloss('/users/kcnco/GitHub2021ACWSD/Kangxi dictionary/gloss_with_key.txt')
+gloss_dict = load_gloss('/clwork/xiaomeng/Test/KangxiDict/gloss_with_key.txt')
 
 ##append all the gloss embedding with key(new_keys) in gloss_vecs(a dict)
 gloss_vecs = {}
