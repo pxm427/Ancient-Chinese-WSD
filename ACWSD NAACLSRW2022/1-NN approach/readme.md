@@ -1,3 +1,5 @@
+# Instruction
+
 a_avg.py: E = Combination(Eavg, Eg)
 a_concat.py: E = Combination(Eavg, Eg)
 ps: Eavg from Etrain: a_train_data_embed_avg.py, Eg from gloss: a_gloss_data.py
