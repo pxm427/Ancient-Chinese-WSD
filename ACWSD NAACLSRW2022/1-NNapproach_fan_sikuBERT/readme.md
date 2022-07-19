@@ -1,6 +1,6 @@
 # Instruction
 
-Model -> sikuBERT(Traditional)
+Model -> sikuBERT(Traditional)  
 Text -> Traditional
 
 a_avg.py: E = Combination(Eavg, Eg)
