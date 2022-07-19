@@ -1,7 +1,7 @@
 # Zuo Zhuan Ancient Chinese Dataset for WSD
 
 **Update**  
-*We update the accuracy, you can check it in our file.*
+*We update the accuracy, you can check it in our file.*  
 *We also tried other Ancient Chinese models, you can check it in our file.*
 
 Published in [NAACL SRW 2022](https://naacl2022-srw.github.io/accepted)  
